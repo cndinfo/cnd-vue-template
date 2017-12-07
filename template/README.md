@@ -1,6 +1,6 @@
 # cnd-vue-template
 
-> A Vue.js project
+> A CND Vue.js project
 
 ## Build Setup
 
