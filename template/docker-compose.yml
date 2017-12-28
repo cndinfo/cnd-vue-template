@@ -1,0 +1,9 @@
+version: '3'
+services:
+  GunGame:
+    build: .
+    ports:  
+      - "3000:8080"
+
+  
+
