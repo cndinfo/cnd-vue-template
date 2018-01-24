@@ -31,7 +31,7 @@ export default {
   }
 	.emptyGif {
 		display: block;
-		width: 35%;
+		width: 25%;
     margin: 0 auto; 
 	}
 </style>
