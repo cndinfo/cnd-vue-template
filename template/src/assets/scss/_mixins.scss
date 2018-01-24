@@ -1,0 +1,68 @@
+@mixin border($color: palette(gold), $radius: $border-radius) {
+  border: {
+    color: $color;
+    radius: $radius;
+    width: 1px;
+    style: solid;
+  }
+}
+
+@mixin relative-position($type: absolute, $top: 50%, $left: 50%) {
+  position: $type;
+  top: $top;
+  left: $left;
+  transform: translate($left * (-1), $top * (-1));
+}
+
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+// flex 实现水平垂直居中
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+// flex 实现垂直居中两端对齐
+@mixin flex-justify-center() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin material-shadow {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@mixin pseudo-border($width: 1px) {
+  &.active {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      border-bottom: $width solid palette(gold);
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+//
+//@mixin background($color, $size, $position) {
+//  background: {
+//    color: $color;
+//    size: $size;
+//    position: $position;
+//    repeat: no-repeat;
+//  }
+//}

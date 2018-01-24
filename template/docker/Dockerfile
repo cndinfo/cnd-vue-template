@@ -1,20 +1,13 @@
 FROM centos:latest
-MAINTAINER "lijiasen" <lijiasen@chinacnd.com>
-RUN yum -y upgrade;yum -y install lrzsz
+LABEL "lijiasen" <lijiasen@chinacnd.com>
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 RUN echo '' >> /etc/bashrc \
     && echo 'export LANGUAGE="zh_CN.UTF-8"' >> /etc/bashrc \
     && echo 'export LANG="zh_CN.UTF-8"' >> /etc/bashrc
 RUN localedef -c -i zh_CN -f UTF-8 zh_CN.UTF-8
 
-RUN yum -y install openssh-server;yum -y install passwd
-RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
-RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
-RUN echo 'root:p@ssw0rd' |chpasswd
 
-
-RUN yum install -y wget tar make gcc-c++ openssl openssl-devel bzip2
+RUN yum install -y wget tar make gcc-c++ bzip2
 RUN mkdir /apps
 WORKDIR /apps
 

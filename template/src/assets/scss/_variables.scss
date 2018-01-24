@@ -1,0 +1,76 @@
+// Colors
+$black: #000000;
+$white: #FFFFFF;
+$red: #D95349;
+$gold: #FDD100;
+
+$palettes: (
+  gold: (
+    dark: #FFCB3C,
+    base: $gold,
+    light: #F2D7B9
+	),
+
+	gray: (
+    // title, hint, content, tab
+    dark: #7C7D7E,
+    base: #979797,
+		light: #C1C1C1,
+		x-light: #F5F5F5
+	),
+
+	dark: (
+    // background, block, input, input-light
+    dark: #1E2125,
+    base: #25282C,
+    light: #2E363C,
+    x-light: #4F5B64
+	)
+);
+
+
+// Font
+$root-font-size: 22px;
+$fonts: (
+  content: (
+    normal: 1rem,
+    medium: 1.08333rem,
+    large: 1.16667rem,
+    x-large: 1.25rem
+  ),
+  header: (
+    normal: 1.35rem,
+    medium: 1.5rem
+  )
+);
+
+// Misc
+$border-radius: 3px;
+
+$height: (
+  button: (
+    normal: 40px,
+    large: 50px
+  ),
+
+  input: (
+    normal: 43.5px,
+    large: 105px,
+  ),
+
+  interval: (
+    normal: 16px
+  )
+);
+
+$width: (
+  container: (
+    normal: 75%,
+    large: 90%
+  ),
+
+  icon: (
+    //normal:
+    large: 25px
+  )
+);

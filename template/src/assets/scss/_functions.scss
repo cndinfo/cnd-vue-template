@@ -1,0 +1,23 @@
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+}
+
+@function card($palette, $tone: 'normal') {
+  @if type-of(map-get($cards, $palette)) == 'map' {
+    @return map-get(map-get($cards, $palette), $tone);
+  } @else {
+    @return map-get($cards, $palette);
+  }
+}
+
+@function height($item, $size: 'normal') {
+  @return map-get(map-get($height, $item), $size);
+}
+
+@function width($item, $size: 'normal') {
+  @return map-get(map-get($width, $item), $size);
+}
+
+@function font($item, $size: 'normal') {
+  @return map-get(map-get($fonts, $item), $size);
+}
