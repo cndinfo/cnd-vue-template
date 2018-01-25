@@ -1,4 +1,4 @@
 build/*.js
 config/*.js
-src/assetsnpm i -g npm
+src/assets
 test/**/*.js
