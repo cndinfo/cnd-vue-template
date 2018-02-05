@@ -30,13 +30,16 @@ RUN npm set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass
 
 RUN npm config set registry https://registry.npm.taobao.org
 
+RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+RUN curl --silent --location https://rpm.nodesource.com/setup_6.x |  bash -
+RUN yum -y install yarn
 
 RUN yum -y install python-setuptools python-setuptools-devel
 RUN easy_install supervisor
-RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /var/log/apps
 
 COPY package.json /tmp/package.json
-RUN cd /tmp && npm install
+RUN cd /tmp && yarn install
 RUN cp -a /tmp/node_modules /apps/
 
 WORKDIR /apps
