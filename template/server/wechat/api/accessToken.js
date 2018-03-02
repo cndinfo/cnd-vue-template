@@ -33,7 +33,7 @@ const getAccessTokenRequest = () => {
 /**
  * 从缓存中获取Access_Token，如果没有获取到则调用getAccessTokenRequest
  */
-const getAccessToken = async ()=> {
+const getAccessToken = async() => {
   let accessToken = cache.get(config.QY_ACCESS_TOKEN)
 
   if (!accessToken) {
