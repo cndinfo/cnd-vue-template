@@ -4,7 +4,6 @@
       <img class='emptyGif' :src="emptyGif">
       <button @click="getUserInfo()">获取用户信息</button>
       <button @click="login()">登录</button>
-
   </div>
 </template>
 
