@@ -27,14 +27,12 @@ export default {
       })
     },
     login() {
-      const parameters = [{
-        String: {
-          'openId': '',
-          'username': 'admin',
-          'password': 'DtxqK2d9WA'
-        }
-      }]
-      axios.post('/api/userinfo/login', parameters)
+      const openId = ''
+      const username = 'admin'
+      const password = 'DtxqK2d9WA'
+      axios.post('/api/userinfo/login', { openId, username, password }).then((res) => {
+        console.log('登录成功')
+      })
     }
   }
 }

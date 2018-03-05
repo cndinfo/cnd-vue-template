@@ -26,9 +26,14 @@ router.get('/get/:userId', function(req, res) {
 router.post('/login', function(req, res) {
   const boId = 'aucapi_AucCustomerRestBO_bo'
   const methodName = 'login'
-  const params = req.body
-
-  apiKit(boId, methodName, params).then((response) => {
+  const parameters = [{
+    String: {
+      'openId': req.body.openId,
+      'username': req.body.username,
+      'password': req.body.password
+    }
+  }]
+  apiKit(boId, methodName, parameters).then((response) => {
     res.send(response)
   })
 })
