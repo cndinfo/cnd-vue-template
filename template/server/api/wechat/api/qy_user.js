@@ -2,7 +2,7 @@ const request = require('request')
 const config = require('../config')
 const qs = require('querystring')
 
-const getAccessToken = require('./accessToken')
+const getAccessToken = require('./qy_accessToken')
 
 const getUserInfoByToken = (token, userId) => {
   const queryParams = {

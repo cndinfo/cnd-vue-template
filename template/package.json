@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "memory-cache": "^0.2.0",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "sass-resources-loader": "^1.3.1",

@@ -2,16 +2,39 @@
   <div class="hello">
       <h1>{{msg}}</h1>
       <img class='emptyGif' :src="emptyGif">
+      <button @click="getUserInfo()">获取用户信息</button>
+      <button @click="login()">登录</button>
+
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
       msg: '微信端Vue模板',
       emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3'
+    }
+  },
+  methods: {
+    getUserInfo() {
+      const account = 'admin'
+      axios.get('/api/userinfo/get/' + account).then((res) => {
+        console.log(res.data.data.account)
+      })
+    },
+    login() {
+      const parameters = [{
+        String: {
+          'openId': '',
+          'username': 'admin',
+          'password': 'DtxqK2d9WA'
+        }
+      }]
+      axios.post('/api/userinfo/login', parameters)
     }
   }
 }

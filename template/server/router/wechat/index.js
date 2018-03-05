@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const user = require('../wechat/api/user')
+const user = require('../../api/wechat/api/qy_user')
 
 router.post('/get', user.getUserInfo)
 
