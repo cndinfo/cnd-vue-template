@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
       <h1>{{msg}}</h1>
+      <h2>{{userinfo.username}}</h2>
       <img class='emptyGif' :src="emptyGif">
       <button @click="getUserInfo()">获取用户信息</button>
       <button @click="login()">登录</button>
@@ -15,6 +16,9 @@ export default {
   data() {
     return {
       msg: '微信端Vue模板',
+      userinfo: {
+        username: ''
+      },
       emptyGif: 'https://wpimg.wallstcn.com/0e03b7da-db9e-4819-ba10-9016ddfdaed3'
     }
   },
@@ -22,7 +26,7 @@ export default {
     getUserInfo() {
       const account = 'admin'
       axios.get('/api/userinfo/get/' + account).then((res) => {
-        console.log(res.data.data.account)
+        this.userinfo.username = res.data.data.account
       })
     },
     login() {
