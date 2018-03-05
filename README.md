@@ -3,4 +3,8 @@
 
 ```
 vue init cnd-info/cnd-vue-template
+
+npm install
+
+npm run dev
 ```
