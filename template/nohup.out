@@ -1,0 +1,9 @@
+
+> cnd-vue-template@1.0.0 dev /Users/lijiasen/git/cnd-vue-template/template
+> node build/dev-server.js
+
+> Starting dev server...
+ DONE  Compiled successfully in 3790ms下午2:56:36
+
+> Listening at http://localhost:8080
+

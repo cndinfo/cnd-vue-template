@@ -1,17 +1,17 @@
 module.exports = {
   dev: {
-    apiUrl: 'http://119.29.180.221:8888/framework/ws/rest/',
+    apiUrl: 'http://localhost:8080/framework/ws/rest/',
     eap_username: 'admin',
-    eap_password: 'DtxqK2d9WA'
+    eap_password: '1'
   },
   test: {
     apiUrl: 'http://localhost:8080/framework/ws/rest/',
     eap_username: 'admin',
-    eap_password: 'DtxqK2d9WA'
+    eap_password: '1'
   },
   pro: {
-    apiUrl: 'http://119.29.180.221:8888/framework/ws/rest/',
+    apiUrl: 'http://localhost:8080/framework/ws/rest/',
     eap_username: 'admin',
-    eap_password: 'DtxqK2d9WA'
+    eap_password: '1'
   }
 }
