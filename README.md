@@ -2,7 +2,7 @@
 建发信息VUE模板
 
 ```
-vue init cnd-info/cnd-vue-template
+vue init cndinfo/cnd-vue-template
 
 npm install
 
