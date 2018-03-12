@@ -1,7 +1,7 @@
 'use strict'
 
 const request = require('request')
-const config = require('./config')
+const config = require('../../config')
 const qs = require('querystring')
 const cache = require('memory-cache')
 

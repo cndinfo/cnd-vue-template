@@ -1,5 +1,5 @@
 const request = require('request')
-const config = require('./config')
+const config = require('../../config')
 const qs = require('querystring')
 
 const getAccessToken = require('./qy_accessToken')
