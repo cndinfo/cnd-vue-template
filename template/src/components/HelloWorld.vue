@@ -33,7 +33,7 @@ export default {
       })
     },
     getAccessToken() {
-      axios.get('/wechat/getAccessToken/').then((res) => {
+      axios.get('/wechat/accessToken/').then((res) => {
         console.log(res)
         this.accessToken = res.data
       })
