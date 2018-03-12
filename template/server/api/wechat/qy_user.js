@@ -2,7 +2,7 @@ const request = require('request')
 const config = require('../../config')
 const qs = require('querystring')
 
-const getAccessToken = require('./qy_accessToken')
+const accessToken = require('./qy_accessToken')
 
 const getUserInfoByToken = (token, userId) => {
   const queryParams = {
@@ -27,8 +27,8 @@ const getUserInfoByToken = (token, userId) => {
 }
 
 const getUserInfo = async (req, res) => {
-  const token = await getAccessToken()
-  getUserInfoByToken(token, req.body.userId).then(val => {
+  const token = await accessToken.getAccessToken(req, res)
+  getUserInfoByToken(token, req.params.userId).then(val => {
     res.send(val)
   })
 }

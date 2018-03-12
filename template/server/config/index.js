@@ -9,7 +9,7 @@ module.exports = merge(baseWeChatConf, qyWeChatConf, {
   QY_AGENT_ID: '1000002',
   QY_ACCESS_TOKEN: 'qy_access_token',
   dev: {
-    apiUrl: 'http://localhost:8080/framework/ws/rest/',
+    apiUrl: 'http://122.112.238.47:8081/framework/ws/rest/',
     eap_username: 'admin',
     eap_password: '1'
   },

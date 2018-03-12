@@ -4,7 +4,7 @@ const router = require('express').Router()
 /**
  * 获取用户信息
  */
-router.get('/get/:userId', function(req, res) {
+router.get('/:userId', function(req, res) {
   const boId = 'aucapi_AucCustomerRestBO_bo'
   const methodName = 'getUserInfo'
   const params = req.params.userId

@@ -5,6 +5,7 @@
       <h2>{{userinfo.username}}</h2>
       <img class='emptyGif' :src="emptyGif">
       <button @click="getUserInfo()">获取用户信息</button>
+      <button @click="getWechatUserInfo()">获取微信用户信息</button>
       <button @click="login()">登录</button>
       <button @click="getAccessToken()">获取accessToken</button>
   </div>
@@ -28,8 +29,15 @@ export default {
   methods: {
     getUserInfo() {
       const account = 'admin'
-      axios.get('/api/userinfo/get/' + account).then((res) => {
+      axios.get('/api/userinfo/' + account).then((res) => {
+        console.log(res)
         this.userinfo.username = res.data.data.account
+      })
+    },
+    getWechatUserInfo() {
+      axios.get('/wechat/userinfo/LiJiaSen').then((res) => {
+        console.log(res.data)
+        this.userinfo.username = res.data.name
       })
     },
     getAccessToken() {

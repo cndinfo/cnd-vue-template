@@ -42,7 +42,20 @@ const getAccessToken = async(req, res) => {
 
     cache.put(config.QY_ACCESS_TOKEN, accessToken, 1000 * 7000)
   }
-  res.send(accessToken)
+  try {
+    return accessToken
+  } catch (error) {
+    console.log(error)
+  }
 }
 
-module.exports = { getAccessToken }
+/**
+ * 从缓存中获取Access_Token，如果没有获取到则调用getAccessTokenRequest
+ */
+const getAccessTokenApi = async(req, res) => {
+  const accessToken = await getAccessToken()
+
+  return res.send(accessToken)
+}
+
+module.exports = { getAccessToken, getAccessTokenApi }
