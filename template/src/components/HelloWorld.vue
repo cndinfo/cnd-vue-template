@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/utils/axios'
+import { setToken } from '@/utils/auth'
 
 export default {
   name: 'HelloWorld',
@@ -29,9 +30,9 @@ export default {
   methods: {
     getUserInfo() {
       const account = 'admin'
-      axios.get('/api/userinfo/' + account).then((res) => {
+      axios.get('/api/userinfo/get/' + account).then((res) => {
         console.log(res)
-        this.userinfo.username = res.data.data.account
+        this.userinfo.username = res.data.id
       })
     },
     getWechatUserInfo() {
@@ -47,11 +48,12 @@ export default {
       })
     },
     login() {
-      const openId = ''
-      const username = 'admin'
-      const password = 'DtxqK2d9WA'
-      axios.post('/api/userinfo/login', { openId, username, password }).then((res) => {
-        console.log('登录成功')
+      const account = 'admin'
+      const password = '1'
+      axios.post('/api/userinfo/login', { account, password }).then((res) => {
+        console.log('登录成功', res.data)
+
+        setToken(res.data.token)
       })
     }
   }

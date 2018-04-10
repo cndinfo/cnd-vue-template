@@ -8,19 +8,25 @@ module.exports = merge(baseWeChatConf, qyWeChatConf, {
   QY_CORPSECRET: 'zbtKjvCZ0apgZPpiSyA1ZQzzOjEProzSWVGANw1TGR8',
   QY_AGENT_ID: '1000002',
   QY_ACCESS_TOKEN: 'qy_access_token',
-  dev: {
-    apiUrl: 'http://122.112.238.47:8081/framework/ws/rest/',
-    eap_username: 'admin',
-    eap_password: '1'
+  development: {
+    eap: {
+      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      eap_username: 'admin',
+      eap_password: '1'
+    }
   },
-  test: {
-    apiUrl: 'http://localhost:8080/framework/ws/rest/',
-    eap_username: 'admin',
-    eap_password: '1'
+  testing: {
+    eap: {
+      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      eap_username: 'admin',
+      eap_password: '1'
+    }
   },
-  pro: {
-    apiUrl: 'http://localhost:8080/framework/ws/rest/',
-    eap_username: 'admin',
-    eap_password: '1'
+  production: {
+    eap: {
+      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      eap_username: 'admin',
+      eap_password: '1'
+    }
   }
 })
