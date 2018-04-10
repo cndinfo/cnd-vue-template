@@ -1,4 +1,6 @@
-exports.secretToken = 'aMdoeb5ed83z2rRd46g68DML81DcnrzeSD648ferFejmplx'
+var crypto = require('crypto')
+
+exports.secretToken = crypto.randomBytes(64).toString('hex')
 const TOKEN_EXPIRATION = 7000
 const TOKEN_EXPIRATION_SEC = TOKEN_EXPIRATION * 1000
 
