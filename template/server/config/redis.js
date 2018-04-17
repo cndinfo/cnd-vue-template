@@ -1,5 +1,6 @@
 var redis = require('redis')
-var redisClient = redis.createClient(6379)
+const config = require('./index')
+var redisClient = redis.createClient(config[process.env.NODE_ENV].redis.port, config[process.env.NODE_ENV].redis.host)
 
 redisClient.on('error', function(err) {
   console.log('Error ', err)

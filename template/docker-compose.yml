@@ -1,11 +1,49 @@
 version: '3'
 services:
+  mongo-seed: 
+    image: mongodb:latest
+    links: 
+      - mongodb 
+    command: ["./wait-for-it.sh","mongodb","mongo --host mongodb < /init.js"]
+  mongodb:
+    build: 
+      context: ./docker/mongodb
+      dockerfile: ./Dockerfile
+    image: mongodb:latest
+    ports:
+      - "27017:27017"
+    volumes:  
+      - /home/db:/home/db
   app:
     build: 
       context: ./
-      dockerfile: ./docker/Dockerfile
+      dockerfile: ./docker/app/Dockerfile
     ports:  
-      - "3000:8080"
-
-  
+      - "3000:9527"
+    volumes:  
+      - /home/upload:/home/upload
+    links:
+      - mongodb
+      - redis
+  ftp:
+    build: 
+      context: ./docker/ftp
+      dockerfile: ./Dockerfile
+    ports:  
+      - "2121:21"
+      - "2222:22"
+    volumes:  
+      - /home/upload:/home/vsftpd
+  nginx:
+    build: 
+      context: ./docker/nginx
+      dockerfile: ./Dockerfile
+    ports: 
+      - "80:80"
+    volumes:
+      - /home/upload:/home/upload
+  redis: 
+    image: redis:latest
+    ports: 
+      - "16379:6379"
 

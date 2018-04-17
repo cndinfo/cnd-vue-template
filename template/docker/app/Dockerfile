@@ -5,15 +5,12 @@ RUN echo '' >> /etc/bashrc \
     && echo 'export LANGUAGE="zh_CN.UTF-8"' >> /etc/bashrc \
     && echo 'export LANG="zh_CN.UTF-8"' >> /etc/bashrc
 RUN localedef -c -i zh_CN -f UTF-8 zh_CN.UTF-8
-
-
-RUN yum install -y wget tar make gcc-c++ bzip2
+RUN yum install -y wget tar make gcc-c++ openssl openssl-devel bzip2
 RUN mkdir /apps
 WORKDIR /apps
 
-
 # Installing node.js
-ENV NODE_VERSION 8.9.3
+ENV NODE_VERSION 8.10.0
 ENV ARCH x64
 
 RUN   wget http://cdn.npm.taobao.org/dist/node/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz \
@@ -30,22 +27,19 @@ RUN npm set sass_binary_site http://cdn.npm.taobao.org/dist/node-sass
 
 RUN npm config set registry https://registry.npm.taobao.org
 
-RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
-RUN curl --silent --location https://rpm.nodesource.com/setup_6.x |  bash -
-RUN yum -y install yarn
 
 RUN yum -y install python-setuptools python-setuptools-devel
 RUN easy_install supervisor
 RUN mkdir -p /var/log/apps
 
 COPY package.json /tmp/package.json
-RUN cd /tmp && yarn install
+RUN cd /tmp && npm install
 RUN cp -a /tmp/node_modules /apps/
 
 WORKDIR /apps
 COPY . /apps
 
-COPY docker/conf/supervisor.conf /etc/supervisord.conf
+COPY ./docker/app/conf/supervisor.conf /etc/supervisord.conf
 
-EXPOSE 20 21 22 3000 9001 27017
+EXPOSE 9527 9001 
 CMD ["/usr/bin/supervisord"]

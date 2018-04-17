@@ -6,10 +6,14 @@ const TOKEN_EXPIRATION_SEC = TOKEN_EXPIRATION * 1000
 
 exports.TOKEN_EXPIRATION = TOKEN_EXPIRATION
 exports.TOKEN_EXPIRATION_SEC = TOKEN_EXPIRATION_SEC
-const cache = require('memory-cache')
-// 开发环境暂时不开启redis
-const redisClient = require('./redis').redisClient
-
+var cache = Object
+// 暂时不开启redis
+var redisClient = Object
+if (process.env.NODE_ENV === 'production') {
+  redisClient = require('./redis').redisClient
+} else {
+  cache = require('memory-cache')
+}
 exports.setToken = (token) => {
   if (process.env.NODE_ENV === 'production') {
     redisClient.set(token, '', TOKEN_EXPIRATION_SEC)

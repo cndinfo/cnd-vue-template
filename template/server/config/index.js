@@ -10,23 +10,44 @@ module.exports = merge(baseWeChatConf, qyWeChatConf, {
   QY_ACCESS_TOKEN: 'qy_access_token',
   development: {
     eap: {
-      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      url: 'http://122.112.237.248:8080/framework/ws/rest/',
       eap_username: 'admin',
       eap_password: '1'
+    },
+    mongodb: {
+      url: 'mongodb://dev:cndappdev@mongodb:27017/JFGF'
+    },
+    redis: {
+      host: '192.168.33.10',
+      port: 16379
     }
   },
   testing: {
     eap: {
-      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      url: 'http://',
       eap_username: 'admin',
       eap_password: '1'
+    },
+    mongodb: {
+      url: 'mongodb://dev:cndappdev@mongodb:27017/JFGF'
+    },
+    redis: {
+      host: 'redis',
+      port: 16379
     }
   },
   production: {
     eap: {
-      url: 'http://10.211.55.9:8080/framework/ws/rest/',
+      url: 'http://122.112.237.248:8080/framework/ws/rest/',
       eap_username: 'admin',
       eap_password: '1'
+    },
+    mongodb: {
+      url: 'mongodb://dev:cndappdev@mongodb:27017/JFGF'
+    },
+    redis: {
+      host: 'redis',
+      port: 16379
     }
   }
 })

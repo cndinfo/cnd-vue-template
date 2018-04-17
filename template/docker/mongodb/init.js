@@ -1,0 +1,5 @@
+conn = new Mongo('mongodb:27017')
+db = conn.getDB('admin')
+printjson(db.createUser({ user: 'admin', pwd: 'p@ssw0rd', roles: [] }))
+db = conn.getDB('JFGF')
+printjson(db.createUser({ user: 'dev', pwd: 'cndappdev', roles: [] }))
