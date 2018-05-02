@@ -14,6 +14,7 @@
 <script>
 import axios from '@/utils/axios'
 import { setToken } from '@/utils/auth'
+import { wxCustomShareMixin } from '@/wechat'
 
 export default {
   name: 'HelloWorld',
@@ -56,7 +57,17 @@ export default {
         setToken(res.data.token)
       })
     }
-  }
+  },
+  mounted() {
+    // 某些页面自定义微信分享内容
+    this.customWxShare(
+      '',
+      '',
+      '',
+      ''
+    )
+  },
+  mixins: [wxCustomShareMixin]
 }
 </script>
 
@@ -75,6 +86,6 @@ export default {
 	.emptyGif {
 		display: block;
 		width: 25%;
-    margin: 0 auto; 
+    margin: 0 auto;
 	}
 </style>
