@@ -2,6 +2,7 @@ const express = require('express')
 const compression = require('compression')
 const secret = require('../config/secret')
 var jwt = require('express-jwt')
+require('../mock/server')
 
 const app = express()
 app.use(compression())

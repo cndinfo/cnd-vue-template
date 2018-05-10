@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
+import allConfig from '@/wechat/config'
+const wxConfig = allConfig[process.env.NODE_ENV]
+const qs = require('querystring')
 // import HelloWorld from '@/components/HelloWorld'
 Vue.use(Router)
 
