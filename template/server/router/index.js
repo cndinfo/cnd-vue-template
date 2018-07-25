@@ -2,6 +2,7 @@ const express = require('express')
 const compression = require('compression')
 const secret = require('../config/secret')
 var jwt = require('express-jwt')
+require('../mock/server')
 
 const app = express()
 app.use(compression())
@@ -23,5 +24,38 @@ app.use('/api/userinfo', login)
 const userinfo = require('./unieap/userinfo')
 app.use('/api/userinfo', jwt({ secret: secret.secretToken }), secret.verifyToken, userinfo)
 
-module.exports = app
+// 微信网页授权
+const getUserInfo = require('./wechat/getUserInfo')
+app.use(getUserInfo)
 
+// 微信网页静默授权
+const getOpenId = require('./wechat/getOpenId')
+app.use(getOpenId)
+
+// 生成微信支付 API
+const wxpay = require('./wechat/wxPay')
+app.post('/api/wxpay', wxpay.wxpay)
+
+// 微信支付回调
+const wxPayCallback = require('./wechat/wxPayCallback')
+app.use(wxPayCallback)
+
+// 微信 SDK 验证
+const getJsSdkSignature = require('./wechat/getJsSdkSignature')
+app.post('/api/wxSignature', function(req, res) {
+  const clientUrl = req.body.url
+  getJsSdkSignature(clientUrl).then(signature => {
+    res.send(signature)
+  })
+})
+
+// 微信用户是否关注公众号
+const getSubscribe = require('./wechat/getSubscribe')
+app.post('/api/wxSubscribe', function(req, res) {
+  const openid = req.body.openid
+  getSubscribe(openid).then(subscribe => {
+    res.send(subscribe)
+  })
+})
+
+module.exports = app
