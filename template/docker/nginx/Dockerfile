@@ -9,7 +9,7 @@ RUN localedef -c -i zh_CN -f UTF-8 zh_CN.UTF-8
 RUN yum -y install epel-release
 RUN yum -y install nginx
 RUN yum -y install python-setuptools python-setuptools-devel 
-RUN easy_install supervisor
+RUN easy_install -i https://pypi.tuna.tsinghua.edu.cn/simple supervisor
 RUN mkdir -p /var/log/supervisor
 
 COPY nginx.conf /etc/nginx/nginx.conf

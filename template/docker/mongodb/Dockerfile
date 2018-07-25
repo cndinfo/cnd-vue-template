@@ -17,7 +17,7 @@ RUN yum install -y mongodb-org
 RUN mkdir -p /data/db
 
 RUN yum -y install python-setuptools python-setuptools-devel 
-RUN easy_install supervisor
+RUN easy_install -i https://pypi.tuna.tsinghua.edu.cn/simple supervisor
 RUN mkdir -p /var/log/supervisor
 
 COPY init.js /init.js

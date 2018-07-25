@@ -29,7 +29,7 @@ RUN npm config set registry https://registry.npm.taobao.org
 
 
 RUN yum -y install python-setuptools python-setuptools-devel
-RUN easy_install supervisor
+RUN easy_install -i https://pypi.tuna.tsinghua.edu.cn/simple supervisor
 RUN mkdir -p /var/log/apps
 
 COPY package.json /tmp/package.json
