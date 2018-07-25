@@ -4,10 +4,6 @@ const qyWeChatConf = require('./wechat.qiye.conf')
 const merge = require('webpack-merge')
 
 module.exports = merge(baseWeChatConf, qyWeChatConf, {
-  QY_CORPID: 'ww8bddc2217282ed2d',
-  QY_CORPSECRET: 'zbtKjvCZ0apgZPpiSyA1ZQzzOjEProzSWVGANw1TGR8',
-  QY_AGENT_ID: '1000002',
-  QY_ACCESS_TOKEN: 'qy_access_token',
   development: {
     eap: {
       url: 'http://122.112.237.248:8080/framework/ws/rest/',
